@@ -15,6 +15,7 @@ public class Proyecto_Estructuras {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        //prueba de funcionalidad kerry alfaro
     }
     
 }
