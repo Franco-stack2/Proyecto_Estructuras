@@ -16,7 +16,7 @@ public class Proyecto_Estructuras {
     public static void main(String[] args) {
 
         //Daniel Mora
-        //D
+        //Daniel 2
     }
     
 }
