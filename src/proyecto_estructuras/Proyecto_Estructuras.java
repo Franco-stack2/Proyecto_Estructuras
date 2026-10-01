@@ -20,6 +20,9 @@ public class Proyecto_Estructuras {
         // Probando conexion git TITO
         //Hola a todos
         // Probando por segunda vez
+        
+        int num;
+        
     }
     
 }
