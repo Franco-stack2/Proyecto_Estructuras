@@ -15,13 +15,7 @@ public class Proyecto_Estructuras {
      */
     public static void main(String[] args) {
 
-        //Daniel Mora
-        //Daniel 2
-        // Probando conexion git TITO
-        //Hola a todos
-        // Probando por segunda vez
-        
-        int num;
+     
         
     }
     
