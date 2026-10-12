@@ -14,18 +14,16 @@ public class iniciosesion {
 
     public static boolean iniciarSesion() {
         String usuario = JOptionPane.showInputDialog(null, "Ingrese su usuario:");
-
+        String contraseña = JOptionPane.showInputDialog(null, "Ingrese su contraseña:");
+        
         if (usuario == null || usuario.trim().isEmpty()) {
             return false;
         }
-
-        String clave = JOptionPane.showInputDialog(null, "Ingrese su contraseña:");
-
-        if (clave == null || clave.isEmpty()) {
+        if (contraseña == null || contraseña.isEmpty()) {
             return false;
         }
-
-        JOptionPane.showMessageDialog( null, "-----INICIO DE SESIÓN EXITOSO-----\n"
+        
+        JOptionPane.showMessageDialog( null, "====INICIO DE SESIÓN EXITOSO====\n"
                 +"\n"
                 + "Bienvenid@, " + usuario 
         );
