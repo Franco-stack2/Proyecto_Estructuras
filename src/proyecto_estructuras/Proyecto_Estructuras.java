@@ -14,15 +14,16 @@ public class Proyecto_Estructuras {
 
   
  
-     public static void menuRec(){
+     public static void menuTiquetes(Cola c){
        String res;
         do{
-            res=JOptionPane.showInputDialog(" ******* Modulo Recursion *******\n"
-                    + "1)Promedio\n2)Pares e Impares\n0)Atras\n\n"
+            res=JOptionPane.showInputDialog(" ******* Modulo de tiquetes*******\n"
+                    + "1)Crear un tiquete\n2)Posición en la fila\n0)Atras\n\n"
                     + "ingrese una opcion (0-3)");
             switch(res){
                 case "1":
-                  
+                  JOptionPane.showMessageDialog(null, 
+                            "En proceso");
                     break;
                 case "2":
            
@@ -30,7 +31,7 @@ public class Proyecto_Estructuras {
                     break;
                 case "0":
                     JOptionPane.showMessageDialog(null, 
-                            "...");
+                            "En proceso");
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, 
@@ -40,7 +41,7 @@ public class Proyecto_Estructuras {
     }
     
     
-    public static void menuCola(Cola c){
+    public static void menuCola(){
         String res;
         do{
             res=JOptionPane.showInputDialog(" ******* Modulo Colas *******\n"
@@ -113,13 +114,13 @@ public class Proyecto_Estructuras {
                     + "ingrese una opcion (0-3)");
             switch(res){
                 case "1":
-                    menuRec();
+                    menuTiquetes(c);
                     break;
                 case "2":
                     menuPila(p);
                     break;
                 case "3":
-                    menuCola(c);
+                    menuCola();
                     break;
                 case "0":
                     JOptionPane.showMessageDialog(null, 
