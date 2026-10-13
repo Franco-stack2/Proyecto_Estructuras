@@ -26,38 +26,9 @@ public class Proyecto_Estructuras {
                             "En proceso");
                     break;
                 case "2":
-           
-                    
-                    break;
-                case "0":
                     JOptionPane.showMessageDialog(null, 
                             "En proceso");
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, 
-                            "Error opcion no valida");
-            }
-        }while(!res.equals("0"));
-    }
-    
-    
-    public static void menuCola(){
-        String res;
-        do{
-            res=JOptionPane.showInputDialog(" ******* Modulo Colas *******\n"
-                    + "1)Encolar\n2)Mostrar\n3)De mayor a menor\n0)Atras\n\n"
-                    + "ingrese una opcion (0-3)");
-            switch(res){
-                case "1":
-                 
-              
-                    break;
-                case "2":
-            
-                    break;
-                case "3":
-                   
-                
+                    
                     break;
                 case "0":
                     JOptionPane.showMessageDialog(null, 
@@ -70,23 +41,29 @@ public class Proyecto_Estructuras {
         }while(!res.equals("0"));
     }
     
-    public static void menuPila(Pila p){
+    
+  
+    
+    public static void menuReportes(Pila p){
         String res;
         do{
-            res=JOptionPane.showInputDialog(" ******* Modulo Pilas *******\n"
+            res=JOptionPane.showInputDialog(" ******* Modulo de Reportes *******\n"
                     + "1)Apilar\n2)Mostrar\n3)EliminarPares\n0)Atras\n\n"
                     + "ingrese una opcion (0-3)");
             switch(res){
                 case "1":
-
-                
+                    JOptionPane.showMessageDialog(null, 
+                            "En proceso");
                     break;
                 case "2":
                     JOptionPane.showMessageDialog(null, 
-                            p);
+                            "En proceso");
+                    
                     break;
                 case "3":
-            
+                    JOptionPane.showMessageDialog(null, 
+                            "En proceso");
+                    
                     break;
                 case "0":
                     JOptionPane.showMessageDialog(null, 
@@ -110,17 +87,14 @@ public class Proyecto_Estructuras {
         
         do{
             res=JOptionPane.showInputDialog(" ******* MENU *******\n"
-                    + "1)Recursion\n2)Pilas\n3)Colas\n0)SALIR\n\n"
+                    + "1)Menu Tiquetes\n2)Reportes\n0)SALIR\n\n"
                     + "ingrese una opcion (0-3)");
             switch(res){
                 case "1":
                     menuTiquetes(c);
                     break;
                 case "2":
-                    menuPila(p);
-                    break;
-                case "3":
-                    menuCola();
+                    menuReportes(p);
                     break;
                 case "0":
                     JOptionPane.showMessageDialog(null, 
