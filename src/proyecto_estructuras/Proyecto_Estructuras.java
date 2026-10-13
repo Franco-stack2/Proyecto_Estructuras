@@ -15,57 +15,128 @@ public class Proyecto_Estructuras {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-
- int opcion = 0;
-        String menu = "=== MENÚ PRINCIPAL ===\n"
-                    + "1. Módulo 1.1: Crear un tiquete"
-                    + "2. Módulo 1.3: Asignar / Procesar siguiente en col"
-                    + "3. Módulo 1.4: Ver reportes y estadísticas"
-                    + "4. Ver estado actual de las colas (Cajas)"
-                    + "5. Salir"
-                    + "Seleccione una opción:";
-
-        do {
-            String input = JOptionPane.showInputDialog(null, menu, "Proyecto Estructuras de Datos - SC-304", JOptionPane.QUESTION_MESSAGE);
-            
-            if (input == null) {
-                JOptionPane.showMessageDialog(null, "Operación cancelada");
-                break;
-            }
-
-            try {
-                opcion = Integer.parseInt(input);
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Por favor ingrese un número válido.");
-                continue;
-            }
-
-            switch (opcion) {
-                case 1:
-                    // crecion de los tiquetes
+ 
+     public static void menuRec(){
+       String res;
+        do{
+            res=JOptionPane.showInputDialog(" ******* Modulo Recursion *******\n"
+                    + "1)Promedio\n2)Pares e Impares\n0)Atras\n\n"
+                    + "ingrese una opcion (0-3)");
+            switch(res){
+                case "1":
                   
                     break;
-                case 2:
-                    // atencion y avance de las cajas
-              
+                case "2":
+           
+                    
                     break;
-                case 3:
-                    // modulo de reportes
-                  
-                    break;
-                case 4:
-                    // ver estado
-                  
-                    break;
-                case 5:
-                    JOptionPane.showMessageDialog(null, "Saliendo del sistema...");
+                case "0":
+                    JOptionPane.showMessageDialog(null, 
+                            "...");
                     break;
                 default:
-                    JOptionPane.showMessageDialog(null, "Opción fuera de rango (1-5).");
-                    break;
+                    JOptionPane.showMessageDialog(null, 
+                            "Error opcion no valida");
             }
-
-        } while (opcion != 5);
+        }while(!res.equals("0"));
     }
+    
+    
+    public static void menuCola(Cola c){
+        String res;
+        do{
+            res=JOptionPane.showInputDialog(" ******* Modulo Colas *******\n"
+                    + "1)Encolar\n2)Mostrar\n3)De mayor a menor\n0)Atras\n\n"
+                    + "ingrese una opcion (0-3)");
+            switch(res){
+                case "1":
+                 
+              
+                    break;
+                case "2":
+            
+                    break;
+                case "3":
+                   
+                
+                    break;
+                case "0":
+                    JOptionPane.showMessageDialog(null, 
+                            "...");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, 
+                            "Error opcion no valida");
+            }
+        }while(!res.equals("0"));
+    }
+    
+    public static void menuPila(Pila p){
+        String res;
+        do{
+            res=JOptionPane.showInputDialog(" ******* Modulo Pilas *******\n"
+                    + "1)Apilar\n2)Mostrar\n3)EliminarPares\n0)Atras\n\n"
+                    + "ingrese una opcion (0-3)");
+            switch(res){
+                case "1":
+
+                
+                    break;
+                case "2":
+                    JOptionPane.showMessageDialog(null, 
+                            p);
+                    break;
+                case "3":
+            
+                    break;
+                case "0":
+                    JOptionPane.showMessageDialog(null, 
+                            "...");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, 
+                            "Error opcion no valida");
+            }
+        }while(!res.equals("0"));
+    }
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Cola c=new Cola();
+        Pila p=new Pila();
+        String res;
+        
+        do{
+            res=JOptionPane.showInputDialog(" ******* MENU *******\n"
+                    + "1)Recursion\n2)Pilas\n3)Colas\n0)SALIR\n\n"
+                    + "ingrese una opcion (0-3)");
+            switch(res){
+                case "1":
+                    menuRec();
+                    break;
+                case "2":
+                    menuPila(p);
+                    break;
+                case "3":
+                    menuCola(c);
+                    break;
+                case "0":
+                    JOptionPane.showMessageDialog(null, 
+                            "Cerrando el programa");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, 
+                            "Error opcion no valida");
+            }
+        }while(!res.equals("0"));
+        
+        
+        
+        
+    }
+    
 }
+
