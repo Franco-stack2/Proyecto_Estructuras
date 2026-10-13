@@ -12,9 +12,7 @@ import javax.swing.JOptionPane;
  */
 public class Proyecto_Estructuras {
 
-    /**
-     * @param args the command line arguments
-     */
+  
  
      public static void menuRec(){
        String res;
