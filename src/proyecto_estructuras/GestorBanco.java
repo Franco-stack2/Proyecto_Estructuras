@@ -6,8 +6,10 @@ package proyecto_estructuras;
 
 /**
  *
- * @author alfar
+ * @author Usuario
  */
-public class Persona {
+public class GestorBanco {
     
+    
+    // AQUI va la logica pesada de gestionar colas prefenciales y todo 
 }
