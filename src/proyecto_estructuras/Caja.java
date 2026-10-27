@@ -11,8 +11,14 @@ package proyecto_estructuras;
 public class Caja {
     
     private int numeroCaja;
-    private char tipoCaja; // 'P' (Preferencial), 'A' (Rápido), 'B' (Normal)
+    private char tipoCaja; 
     private Tiquete tiqueteActual;
+
+    public Caja(int numeroCaja, char tipoCaja) {
+        this.numeroCaja = numeroCaja;
+        this.tipoCaja = tipoCaja;
+        this.tiqueteActual = null;
+    }
 
     public Caja(int numeroCaja, char tipoCaja, Tiquete tiqueteActual) {
         this.numeroCaja = numeroCaja;
@@ -43,7 +49,9 @@ public class Caja {
     public void setTiqueteActual(Tiquete tiqueteActual) {
         this.tiqueteActual = tiqueteActual;
     }
-    
-    
+
+    public boolean estaOcupada() {
+        return tiqueteActual != null;
+    }
     
 }

@@ -12,61 +12,58 @@ import javax.swing.JOptionPane;
  */
 public class Proyecto_Estructuras {
 
-    public static void menuTiquetes(Cola c) {
+    
+    public static void menuTiquetes(GestorBanco gb) {
         String res;
         do {
             res = JOptionPane.showInputDialog(" ******* Modulo de tiquetes*******\n"
-                    + "1)Crear un tiquete\n2)Posición en la fila\n0)Atras\n\n"
-                    + "ingrese una opcion (0-3)");
+                    + "1)Crear un tiquete\n2)Atender tiquete en caja\n0)Atras\n\n"
+                    + "ingrese una opcion (0-2)");
+            if (res == null) break;
+            
             switch (res) {
                 case "1":
-                    JOptionPane.showMessageDialog(null,
-                            "En proceso");
+ 
+                    gb.registrarTiquete();
                     break;
                 case "2":
-                    JOptionPane.showMessageDialog(null,
-                            "En proceso");
 
+                    gb.tiqueteAtendido();
                     break;
                 case "0":
-                    JOptionPane.showMessageDialog(null,
-                            "...");
+                    JOptionPane.showMessageDialog(null, "...");
                     break;
                 default:
-                    JOptionPane.showMessageDialog(null,
-                            "Error opcion no valida");
+                    JOptionPane.showMessageDialog(null, "Error opcion no valida");
             }
         } while (!res.equals("0"));
     }
 
+  
     public static void menuReportes(Pila p) {
         String res;
         do {
             res = JOptionPane.showInputDialog(" ******* Modulo de Reportes *******\n"
-                    + "1)Apilar\n2)Mostrar\n3)EliminarPares\n0)Atras\n\n"
+                    + "1)Mostrar Historial\n2)En proceso\n3)En proceso\n0)Atras\n\n"
                     + "ingrese una opcion (0-3)");
+            if (res == null) break;
+            
             switch (res) {
                 case "1":
-                    JOptionPane.showMessageDialog(null,
-                            "En proceso");
+      
+                    JOptionPane.showMessageDialog(null, p.toString());
                     break;
                 case "2":
-                    JOptionPane.showMessageDialog(null,
-                            "En proceso");
-
+                    JOptionPane.showMessageDialog(null, "En proceso");
                     break;
                 case "3":
-                    JOptionPane.showMessageDialog(null,
-                            "En proceso");
-
+                    JOptionPane.showMessageDialog(null, "En proceso");
                     break;
                 case "0":
-                    JOptionPane.showMessageDialog(null,
-                            "...");
+                    JOptionPane.showMessageDialog(null, "...");
                     break;
                 default:
-                    JOptionPane.showMessageDialog(null,
-                            "Error opcion no valida");
+                    JOptionPane.showMessageDialog(null, "Error opcion no valida");
             }
         } while (!res.equals("0"));
     }
@@ -75,7 +72,6 @@ public class Proyecto_Estructuras {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
         boolean sesion = iniciosesion.iniciarSesion();
 
         if (!sesion) {
@@ -85,31 +81,36 @@ public class Proyecto_Estructuras {
             );
             return;
         }
-        Cola c = new Cola();
+        
+  
+        GestorBanco gb = new GestorBanco();
         Pila p = new Pila();
-        String res;
+        
+   
+        gb.inicializarBanco();
 
+        String res;
         do {
             res = JOptionPane.showInputDialog(" ******* MENU *******\n"
                     + "1)Menu Tiquetes\n2)Reportes\n0)SALIR\n\n"
-                    + "ingrese una opcion (0-3)");
+                    + "ingrese una opcion (0-2)");
+            if (res == null) break;
+            
             switch (res) {
                 case "1":
-                    menuTiquetes(c);
+              
+                    menuTiquetes(gb);
                     break;
                 case "2":
+      
                     menuReportes(p);
                     break;
                 case "0":
-                    JOptionPane.showMessageDialog(null,
-                            "Cerrando el programa");
+                    JOptionPane.showMessageDialog(null, "Cerrando el programa");
                     break;
                 default:
-                    JOptionPane.showMessageDialog(null,
-                            "Error opcion no valida");
+                    JOptionPane.showMessageDialog(null, "Error opcion no valida");
             }
         } while (!res.equals("0"));
-
     }
-
 }

@@ -94,5 +94,4 @@ public class Tiquete {
     public String toString() {
         return "Tiquete{" + "numero=" + numero + ", nombre=" + nombre + ", id=" + id + ", edad=" + edad + ", horaCreacion=" + horaCreacion + ", horaAtencion=" + horaAtencion + ", tramite=" + tramite + ", tipo=" + tipo + '}';
     }
-
 }

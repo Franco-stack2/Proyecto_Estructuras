@@ -37,5 +37,4 @@ public class Nodo {
     public String toString() {
         return "Nodo{" + "dato=" + dato + ", sig=" + sig + '}';
     }
-
 }
