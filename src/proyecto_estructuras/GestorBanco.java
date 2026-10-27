@@ -120,7 +120,7 @@ public class GestorBanco {
          
             
             int edad = Integer.parseInt(edadStr);
-            char tipo = tipoStr.toUpperCase().charAt(0);
+             char tipo = tipoStr.trim().toUpperCase().charAt(0); // se le añadio el trim
             if (tipo != 'P' && tipo != 'A' && tipo != 'B') {
                 JOptionPane.showMessageDialog(null, "Tipo inválido solo digite las letras no el nombre completo. ");
        
@@ -149,7 +149,7 @@ public class GestorBanco {
             } else {
                 int posicionActual = colaDestino.posicion(nuevoTiquete.getNumero());
                 int personasAdelante = posicionActual;
-               // para contar la posicion bien se recorre las personas y se le resta uno ya que el recorrido toma al cliente mismo
+               // antes este metodo restaba pero porque el index empieza en 0 no es necesario hacer un -1
                
                
                 int numCajaSugerida = obtenerNumeroCajaSugerida(tipo);
