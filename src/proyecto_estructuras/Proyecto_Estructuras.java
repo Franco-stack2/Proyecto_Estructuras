@@ -24,7 +24,7 @@ public class Proyecto_Estructuras {
             switch (res) {
                 case "1":
  
-                    gb.registrarTiquete();
+                    gb.crearTiquete();
                     break;
                 case "2":
 

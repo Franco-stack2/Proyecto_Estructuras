@@ -108,7 +108,7 @@ public class GestorBanco {
     }
 
   
-    public void registrarTiquete() {
+    public void crearTiquete() {
         try {
             String nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente:");
         
