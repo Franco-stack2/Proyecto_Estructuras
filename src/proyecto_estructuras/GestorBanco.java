@@ -60,7 +60,9 @@ public class GestorBanco {
         }
     }
 
-   
+   // seccion de carga de archivo 
+    
+    
     public void inicializarBanco() {
         if (!verificarConfiguracionExistente()) {
             JOptionPane.showMessageDialog(null, 
@@ -85,7 +87,7 @@ public class GestorBanco {
                     cajas[1] = new Caja(2, 'A');
                 }
                 for (int i = 2; i < cantCajas; i++) {
-                    cajas[i] = new Caja(i + 1, 'B');
+                    cajas[i] = new Caja(i + 1, 'B'); // caja normal estas si pueden ser varias
                 }
 
                 guardarConfiguracionArchivo();
@@ -127,7 +129,7 @@ public class GestorBanco {
             }
             
   
-            int numeroTiquete = (int)(Math.random() * 9000) + 1000;
+            int numeroTiquete = (int)(Math.random() * 9000) + 1000; // pendiente de cambio
             String horaCreacion = LocalDateTime.now().format(formatter);
             
             Tiquete nuevoTiquete = new Tiquete(numeroTiquete, nombre, id, edad, horaCreacion, "-1", tramite, tipo);
@@ -152,13 +154,13 @@ public class GestorBanco {
                // antes este metodo restaba pero porque el index empieza en 0 no es necesario hacer un -1
                
                
-                int numCajaSugerida = obtenerNumeroCajaSugerida(tipo);
+                int numCajaSeleccionada= obtenerNumeroCajaSeleccionada(tipo);
 
                 JOptionPane.showMessageDialog(null, 
                     "--- Espere ---\n" +
                     "Número de Tiquete: #" + nuevoTiquete.getNumero() + "\n" +
                    "Hora de Emisión: " + horaCreacion + "\n" +
-                    "Caja de Atención: #" + numCajaSugerida + "\n" +
+                    "Caja de Atención: #" + numCajaSeleccionada + "\n" +
                     "Clientes por delante en fila: " + personasAdelante);
             }
         } catch (NumberFormatException e) {
@@ -230,7 +232,7 @@ public class GestorBanco {
         return null;
     }
 
-    private int obtenerNumeroCajaSugerida(char tipo) {
+    private int obtenerNumeroCajaSeleccionada(char tipo) {
         for (Caja c : cajas) {
             if (c.getTipoCaja() == tipo) {
                 return c.getNumeroCaja();
