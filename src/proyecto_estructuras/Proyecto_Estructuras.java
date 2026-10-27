@@ -28,7 +28,7 @@ public class Proyecto_Estructuras {
                     break;
                 case "2":
 
-                    gb.tiqueteAtendido();
+                    JOptionPane.showMessageDialog(null, "En proceso");
                     break;
                 case "0":
                     JOptionPane.showMessageDialog(null, "...");
@@ -51,7 +51,7 @@ public class Proyecto_Estructuras {
             switch (res) {
                 case "1":
       
-                    JOptionPane.showMessageDialog(null, p.toString());
+                    JOptionPane.showMessageDialog(null, "En proceso");
                     break;
                 case "2":
                     JOptionPane.showMessageDialog(null, "En proceso");

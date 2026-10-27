@@ -169,41 +169,6 @@ public class GestorBanco {
     }
 
    
-    public void tiqueteAtendido() {
-        String cajaInput = JOptionPane.showInputDialog("Ingrese el número de caja que finaliza atención:");
-        if (cajaInput == null) return;
-        
-        try {
-            int numeroCaja = Integer.parseInt(cajaInput);
-            if (numeroCaja < 1 || numeroCaja > cajas.length) {
-                JOptionPane.showMessageDialog(null, "Error: El número de caja ingresado no existe.");
-                return;
-            }
-
-            Caja cajaActual = cajas[numeroCaja - 1];
-
-            if (cajaActual.estaOcupada()) {
-                Tiquete tiqueteTerminado = cajaActual.getTiqueteActual();
-                JOptionPane.showMessageDialog(null, "Atención finalizada con éxito para: " + tiqueteTerminado.getNombre());
-                cajaActual.setTiqueteActual(null);
-            }
-
-            Cola colaAsociada = obtenerColaPorTipo(cajaActual.getTipoCaja());
-            
-            if (!colaAsociada.esVacia()) {
-                Tiquete siguienteCliente = colaAsociada.desencolar();
-                asignarClienteACaja(cajaActual, siguienteCliente);
-                
-                JOptionPane.showMessageDialog(null, 
-                    "Siguiente cliente llamado...\n" +
-                    "Caja #" + numeroCaja + " ahora atiende a: " + siguienteCliente.getNombre());
-            } else {
-                JOptionPane.showMessageDialog(null, "La Caja #" + numeroCaja + " se encuentra ahora libre y en espera.");
-            }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Error: Debe ingresar un valor numérico válido para la caja.");
-        }
-    }
 
    
     private void asignarClienteACaja(Caja caja, Tiquete tiquete) {
