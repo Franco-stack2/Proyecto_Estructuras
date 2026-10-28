@@ -26,6 +26,8 @@ public class GestorBanco {
     public GestorBanco() {
         
     }
+    
+    
 
     // Verifica si el archivo de configuración del banco ya existe
     public boolean verificarConfiguracionExistente() {
@@ -55,7 +57,7 @@ public class GestorBanco {
                 cajas[1] = new Caja(2, 'A');
             }
             for (int i = 2; i < cantidadCajas; i++) {
-                cajas[i] = new Caja(i + 1, 'B');
+                cajas[i] = new Caja(i + 1, 'B'); // cajas noramles
             }
         } catch (IOException | NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error al cargar la base de datos " + e.getMessage());
@@ -105,7 +107,12 @@ public class GestorBanco {
             }
         } else {
             cargarConfiguracionArchivo();
-            JOptionPane.showMessageDialog(null, "Configuración cargada desde prod.txt\nBanco: " + getNombreBanco());
+            
+            int cantCajas = cajas.length; // lo llamo otra vez para que imprima las cajas
+            
+            
+            JOptionPane.showMessageDialog(null, "Configuración cargada desde prod.txt\nBanco: " + getNombreBanco()+ "\n"
+                    + "cantidad de cajas"+  cantCajas);
         }
     }
 
@@ -158,6 +165,9 @@ public class GestorBanco {
             } else {
                 int posicionActual = colaDestino.posicion(nuevoTiquete.getNumero());
                 int personasAdelante = posicionActual;
+                   // antes este metodo restaba pero porque el index empieza en 0 no es necesario hacer un -1
+                
+                
                 int numCajaSeleccionada = obtenerNumeroCajaSeleccionada(tipo);
 
                 JOptionPane.showMessageDialog(null,
