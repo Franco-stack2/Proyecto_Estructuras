@@ -202,7 +202,7 @@ public class GestorBanco {
     }
 }
 
-    // Busca una caja libre que coincida con el tipo de tiquete
+    // Busca una caja libre que coincida con el tipo de tiquete esta logica es principalmente para las cajas B
     private Caja buscarCajaLibrePorTipo(char tipo) {
         for (Caja c : cajas) {
             if (c.getTipoCaja() == tipo && !c.estaOcupada()) {
