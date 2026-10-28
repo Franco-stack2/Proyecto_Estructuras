@@ -212,7 +212,8 @@ public class GestorBanco {
         return null;
     }
 
- 
+ // antes habia un problema y es que lo ponia en una fila de la primera caja b entonces parecia que todos los clientes estaban en la primera
+    // caja b
    private String obtenerNumeroCajaSeleccionada(char tipo) {
  
     for (Caja c : cajas) {
