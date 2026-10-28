@@ -11,16 +11,18 @@ public class Cola {
     private Nodo prim, ult;
     
     
+    // Verifica si la cola se encuentra vacía
     public boolean esVacia() {
         return prim == null;
     }
     
   
+    // Agrega un nuevo tiquete al final de la cola
     public void agregar(Tiquete t) {
         Nodo nuevo = new Nodo(t);
         
         if (esVacia()) {
-            prim = ult = nuevo;   
+            prim = ult = nuevo;    
         } else {
             ult.setSig(nuevo);
             ult = nuevo;
@@ -28,6 +30,7 @@ public class Cola {
     }
     
   
+    // Extrae y retorna el primer tiquete de la cola (desencolar)
     public Tiquete desencolar() {
         if (!esVacia()) {
             Tiquete tiqueteExtraido = prim.getDato(); 
@@ -43,6 +46,7 @@ public class Cola {
     }
 
  
+    // Busca y atiende un tiquete específico por su número dentro de la cola
     public void atiende(int numero) {
         if (!esVacia()) {
             if (prim.getDato().getNumero() == numero) {
@@ -65,6 +69,7 @@ public class Cola {
     }
 
 
+    // Retorna la posición numérica de un tiquete según su número dentro de la cola
     public int posicion(int numero) {
         int pos = 1;
         Nodo aux = prim;
@@ -79,6 +84,7 @@ public class Cola {
     }
 
     
+    // Cuenta y retorna el tamaño actual de la cola
     public int getTamanio() {
         int contador = 0;
         Nodo aux = prim;
@@ -90,6 +96,7 @@ public class Cola {
     }
     
    
+    // Devuelve una representación en cadena de texto de todos los elementos de la cola
     @Override
     public String toString() {
         String r = "Cola de Tiquetes Bancarios: \n";

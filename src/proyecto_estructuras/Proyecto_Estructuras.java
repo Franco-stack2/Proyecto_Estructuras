@@ -12,10 +12,11 @@ import javax.swing.JOptionPane;
  */
 public class Proyecto_Estructuras {
 
-    
+    // Método para mostrar el menú del módulo de tiquetes y gestionar sus opciones
     public static void menuTiquetes(GestorBanco gb) {
         String res;
         do {
+            // Muestra la ventana de opciones del módulo de tiquetes
             res = JOptionPane.showInputDialog(" ******* Modulo de tiquetes*******\n"
                     + "1)Crear un tiquete\n2)Atender tiquete en caja\n0)Atras\n\n"
                     + "ingrese una opcion (0-2)");
@@ -23,7 +24,7 @@ public class Proyecto_Estructuras {
             
             switch (res) {
                 case "1":
- 
+                    // Llama al método para crear el tiquete en el banco
                     gb.crearTiquete();
                     break;
                 case "2":
@@ -43,6 +44,7 @@ public class Proyecto_Estructuras {
     public static void menuReportes(Pila p) {
         String res;
         do {
+            // Muestra la ventana de opciones del módulo de reportes
             res = JOptionPane.showInputDialog(" ******* Modulo de Reportes *******\n"
                     + "1)Mostrar Historial\n2)En proceso\n3)En proceso\n0)Atras\n\n"
                     + "ingrese una opcion (0-3)");
@@ -72,6 +74,7 @@ public class Proyecto_Estructuras {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        // Valida el inicio de sesión antes de arrancar el sistema
         boolean sesion = iniciosesion.iniciarSesion();
 
         if (!sesion) {
@@ -91,6 +94,7 @@ public class Proyecto_Estructuras {
 
         String res;
         do {
+            // Muestra el menú principal del sistema bancario
             res = JOptionPane.showInputDialog(" ******* MENU *******\n"
                     + "1)Menu Tiquetes\n2)Reportes\n0)SALIR\n\n"
                     + "ingrese una opcion (0-2)");

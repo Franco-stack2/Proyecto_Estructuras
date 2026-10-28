@@ -19,6 +19,7 @@ public class GestorBanco {
     private Cola colaNormal = new Cola();
     private Caja[] cajas;
     private String nombreBanco;
+    private int contadorTiquetes = 1; // Consecutivo para los tiquetes
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
@@ -26,13 +27,13 @@ public class GestorBanco {
         
     }
 
- 
-
+    // Verifica si el archivo de configuración del banco ya existe
     public boolean verificarConfiguracionExistente() {
         File archivo = new File("prod.txt");
         return archivo.exists();
     }
 
+    // Guarda la configuración del banco en el archivo prod.txt
     public void guardarConfiguracionArchivo() {
         try (PrintWriter writer = new PrintWriter(new FileWriter("prod.txt"))) {
             writer.println(nombreBanco);  
@@ -42,10 +43,11 @@ public class GestorBanco {
         }
     }
 
+    // Carga la configuración del banco desde el archivo prod.txt
     public void cargarConfiguracionArchivo() {
         try (BufferedReader br = new BufferedReader(new FileReader("prod.txt"))) {
-            this.nombreBanco = br.readLine();           
-            int cantidadCajas = Integer.parseInt(br.readLine()); 
+            this.nombreBanco = br.readLine();            
+            int cantidadCajas = Integer.parseInt(br.readLine());  
             
             this.cajas = new Caja[cantidadCajas];
             cajas[0] = new Caja(1, 'P');
@@ -62,7 +64,7 @@ public class GestorBanco {
 
    // seccion de carga de archivo 
     
-    
+    // Inicializa el banco pidiendo datos si no existe configuración o cargándolos si ya existe
     public void inicializarBanco() {
         if (!verificarConfiguracionExistente()) {
             JOptionPane.showMessageDialog(null, 
@@ -108,28 +110,33 @@ public class GestorBanco {
     }
 
   
+    // Crea un nuevo tiquete solicitando los datos al cliente y lo asigna a la cola correspondiente
     public void crearTiquete() {
         try {
             String nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente:");
+            if (nombre == null) return;
         
             String id = JOptionPane.showInputDialog("Ingrese la identificación:");
-          
+            if (id == null) return;
+        
             String edadStr = JOptionPane.showInputDialog("Ingrese la edad:");
+            if (edadStr == null) return;
            
             String tramite = JOptionPane.showInputDialog("Ingrese el trámite (Depósitos, Retiros, Cambio de Divisas):");
+            if (tramite == null) return;
            
             String tipoStr = JOptionPane.showInputDialog("Ingrese el tipo (solo digite la letra) \n(P: Preferencial, A: Rápido/Un trámite, B: Normal/Dos o más trámites):");
-         
+            if (tipoStr == null) return;
+            
             
             int edad = Integer.parseInt(edadStr);
-             char tipo = tipoStr.trim().toUpperCase().charAt(0); // se le añadio el trim
+            char tipo = tipoStr.trim().toUpperCase().charAt(0);
             if (tipo != 'P' && tipo != 'A' && tipo != 'B') {
                 JOptionPane.showMessageDialog(null, "Tipo inválido solo digite las letras no el nombre completo. ");
-       
+                return;
             }
             
-  
-            int numeroTiquete = (int)(Math.random() * 9000) + 1000; // pendiente de cambio
+            int numeroTiquete = contadorTiquetes++; 
             String horaCreacion = LocalDateTime.now().format(formatter);
             
             Tiquete nuevoTiquete = new Tiquete(numeroTiquete, nombre, id, edad, horaCreacion, "-1", tramite, tipo);
@@ -151,15 +158,12 @@ public class GestorBanco {
             } else {
                 int posicionActual = colaDestino.posicion(nuevoTiquete.getNumero());
                 int personasAdelante = posicionActual;
-               // antes este metodo restaba pero porque el index empieza en 0 no es necesario hacer un -1
-               
-               
-                int numCajaSeleccionada= obtenerNumeroCajaSeleccionada(tipo);
+                int numCajaSeleccionada = obtenerNumeroCajaSeleccionada(tipo);
 
-                JOptionPane.showMessageDialog(null, 
+                JOptionPane.showMessageDialog(null,
                     "--- Espere ---\n" +
                     "Número de Tiquete: #" + nuevoTiquete.getNumero() + "\n" +
-                   "Hora de Emisión: " + horaCreacion + "\n" +
+                    "Hora de Emisión: " + horaCreacion + "\n" +
                     "Caja de Atención: #" + numCajaSeleccionada + "\n" +
                     "Clientes por delante en fila: " + personasAdelante);
             }
@@ -169,14 +173,15 @@ public class GestorBanco {
     }
 
    
-
    
+    // Asigna un tiquete y registra la hora de atención en la caja indicada
     private void asignarClienteACaja(Caja caja, Tiquete tiquete) {
         String horaAtencion = LocalDateTime.now().format(formatter);
         tiquete.setHoraAtencion(horaAtencion);
         caja.setTiqueteActual(tiquete);
     }
 
+  // Obtiene la cola correspondiente según el tipo de tiquete (P, A, B)
   private Cola obtenerColaPorTipo(char tipo) {
     if (tipo == 'P') {
         return colaPreferencial;
@@ -187,7 +192,7 @@ public class GestorBanco {
     }
 }
 
-
+    // Busca una caja libre que coincida con el tipo de tiquete
     private Caja buscarCajaLibrePorTipo(char tipo) {
         for (Caja c : cajas) {
             if (c.getTipoCaja() == tipo && !c.estaOcupada()) {
@@ -197,6 +202,7 @@ public class GestorBanco {
         return null;
     }
 
+    // Obtiene el número de caja correspondiente a un tipo determinado
     private int obtenerNumeroCajaSeleccionada(char tipo) {
         for (Caja c : cajas) {
             if (c.getTipoCaja() == tipo) {
@@ -206,6 +212,7 @@ public class GestorBanco {
         return -1;
     }
 
+    // Retorna el nombre asignado al banco
     public String getNombreBanco() {
         return nombreBanco;
     }
