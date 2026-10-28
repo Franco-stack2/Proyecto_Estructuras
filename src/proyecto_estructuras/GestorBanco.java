@@ -168,7 +168,7 @@ public class GestorBanco {
                    // antes este metodo restaba pero porque el index empieza en 0 no es necesario hacer un -1
                 
                 
-                int numCajaSeleccionada = obtenerNumeroCajaSeleccionada(tipo);
+                String numCajaSeleccionada = obtenerNumeroCajaSeleccionada(tipo);
 
                 JOptionPane.showMessageDialog(null,
                     "--- Espere ---\n" +
