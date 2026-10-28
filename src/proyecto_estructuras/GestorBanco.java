@@ -212,16 +212,17 @@ public class GestorBanco {
         return null;
     }
 
-    // Obtiene el número de caja correspondiente a un tipo determinado
-    private int obtenerNumeroCajaSeleccionada(char tipo) {
-        for (Caja c : cajas) {
-            if (c.getTipoCaja() == tipo) {
-                return c.getNumeroCaja();
-            }
+ 
+   private String obtenerNumeroCajaSeleccionada(char tipo) {
+ 
+    for (Caja c : cajas) {
+        if (c.getTipoCaja() == tipo && !c.estaOcupada()) {
+            return "#" + c.getNumeroCaja(); 
         }
-        return -1;
     }
 
+    return "Por asignar (Espere en fila)";
+}
     // Retorna el nombre asignado al banco
     public String getNombreBanco() {
         return nombreBanco;
