@@ -160,6 +160,7 @@ public class GestorBanco {
                 
                 JOptionPane.showMessageDialog(null, 
                     "¡Esta libre pase adelante!\n" +
+                    "Hora de Emisión: " + horaCreacion + "\n" +
                     "Cliente: " + nuevoTiquete.getNombre() + "\n" +
                     "Por favor proceda directamente a la Caja #" + cajaLibre.getNumeroCaja());
             } else {
