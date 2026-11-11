@@ -34,8 +34,8 @@ public class WebScraper {
                     String venta = celdas.get(2).text();
 
                     if (fecha.contains("/")) { //obtenemos la fecha del cambio del dola
-                        double Compra = Double.parseDouble(compra.replace("₡", "").trim());//obtenemos los valores de compra y venta del dolar
-                        double Venta = Double.parseDouble(venta.replace("₡", "").trim());//obtenemos los valores de compra y venta del dolar
+                        double Compra = Double.parseDouble(compra.replace("₡", "").trim()); //obtenemos los valores de compra y venta del dolar
+                        double Venta = Double.parseDouble(venta.replace("₡", "").trim()); //obtenemos los valores de compra y venta del dolar
 
                         //se muestran las fechas y los valores de compra y venta
                         System.out.println("Fecha: " + fecha
