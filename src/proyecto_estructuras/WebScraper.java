@@ -21,9 +21,9 @@ public class WebScraper {
             Document documento = Jsoup.connect(url).get(); //conecta con la página web
             Elements filas = documento.select("table tr"); //busca las filas en la tabla
 
-            System.out.println("==============================");//se muestra el titulo
-            System.out.println("Tipo de cambio del dolar");
-            System.out.println("==============================");
+            System.out.println("=================================================="); //se muestra el titulo
+            System.out.println("            Tipo de cambio del dolar");
+            System.out.println("==================================================");
 
             for (Element fila : filas) { //obtiene las filas de la tabla 
                 Elements celdas = fila.select("td"); //obtiene las celdas de las filas
@@ -38,13 +38,13 @@ public class WebScraper {
                         double Venta = Double.parseDouble(venta.replace("₡", "").trim());//obtenemos los valores de compra y venta del dolar
 
                         //se muestran las fechas y los valores de compra y venta
-                        System.out.println("Fecha: " + fecha);
-                        System.out.println("Compra: " + Compra);
-                        System.out.println("Venta: " + Venta);
+                        System.out.println("Fecha: " + fecha
+                                + " | Compra: " + Compra
+                                + " | Venta: " + Venta);
                     }
                 }
             }
-            System.out.println("==============================");
+            System.out.println("==================================================");
 
         } catch (IOException e) {
             e.printStackTrace();
