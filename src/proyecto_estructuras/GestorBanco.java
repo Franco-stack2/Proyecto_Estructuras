@@ -183,7 +183,17 @@ public class GestorBanco {
         }
     }
 
-   
+        public String mostrarEstadoColas() {
+        String reporte = "=== El banco: " + this.nombreBanco + " ===\n";
+        
+        
+        reporte += "Cola Preferencial: " + this.colaPreferencial.toString() + "\n";
+        reporte += "Cola Rápida: " + this.colaRapida.toString() + "\n";
+        reporte += "Cola Normal: " + this.colaNormal.toString() + "\n";
+        
+        return reporte;// develve un string porque JOption pane no acepta nulls..
+    }
+    
    
     // Asigna un tiquete y registra la hora de atención en la caja indicada
     private void asignarClienteACaja(Caja caja, Tiquete tiquete) {

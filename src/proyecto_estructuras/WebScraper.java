@@ -1,8 +1,9 @@
+package proyecto_estructuras;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyecto_estructuras;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -13,7 +14,7 @@ import java.io.IOException;
 
 public class WebScraper {
 
-    public static void main(String[] args) {
+    public static void Cambio() {
 
         String url = "https://www.bgeneral.fi.cr/historico-2/"; //direccion de la página web
 

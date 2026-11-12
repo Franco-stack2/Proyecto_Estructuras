@@ -18,7 +18,7 @@ public class Proyecto_Estructuras {
         do {
             // Muestra la ventana de opciones del módulo de tiquetes
             res = JOptionPane.showInputDialog(" ******* Modulo de tiquetes*******\n"
-                    + "1)Crear un tiquete\n2)Atender tiquete en caja\n0)Atras\n\n"
+                    + "1)Crear un tiquete\n2)Atender tiquete en caja\n3)Ver fila\n0)Atras\n"
                     + "ingrese una opcion (0-2)");
             if (res == null) break;
             
@@ -31,6 +31,12 @@ public class Proyecto_Estructuras {
 
                     JOptionPane.showMessageDialog(null, "En proceso");
                     break;
+                
+                case "3":
+
+                    JOptionPane.showMessageDialog(null,gb.mostrarEstadoColas());
+                    break;     
+                    
                 case "0":
                     JOptionPane.showMessageDialog(null, "...");
                     break;
@@ -46,7 +52,7 @@ public class Proyecto_Estructuras {
         do {
             // Muestra la ventana de opciones del módulo de reportes
             res = JOptionPane.showInputDialog(" ******* Modulo de Reportes *******\n"
-                    + "1)Mostrar Historial\n2)En proceso\n3)En proceso\n0)Atras\n\n"
+                    + "1)Mostrar Historial\n2)Tipo de cambio\n3)En proceso\n0)Atras\n\n"
                     + "ingrese una opcion (0-3)");
             if (res == null) break;
             
@@ -56,7 +62,7 @@ public class Proyecto_Estructuras {
                     JOptionPane.showMessageDialog(null, "En proceso");
                     break;
                 case "2":
-                    JOptionPane.showMessageDialog(null, "En proceso");
+                    WebScraper.Cambio();
                     break;
                 case "3":
                     JOptionPane.showMessageDialog(null, "En proceso");
@@ -88,7 +94,7 @@ public class Proyecto_Estructuras {
   
         GestorBanco gb = new GestorBanco();
         Pila p = new Pila();
-        
+        Cola c= new Cola();
    
         gb.inicializarBanco();
 

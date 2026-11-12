@@ -109,6 +109,6 @@ public class Tiquete {
     // Devuelve una representación en formato de texto de todos los datos del tiquete
     @Override
     public String toString() {
-        return "Tiquete{" + "numero=" + numero + ", nombre=" + nombre + ", id=" + id + ", edad=" + edad + ", horaCreacion=" + horaCreacion + ", horaAtencion=" + horaAtencion + ", tramite=" + tramite + ", tipo=" + tipo + '}';
+        return "Tiquete" + "numero=" + numero + ", nombre=" + nombre + ", id=" + id + ", edad=" + edad + ", horaCreacion=" + horaCreacion + ", horaAtencion=" + horaAtencion + ", tramite=" + tramite + ", tipo=" + tipo + '}';
     }
 }
