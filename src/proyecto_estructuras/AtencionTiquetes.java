@@ -5,9 +5,21 @@ import javax.swing.JOptionPane;
 
 public class AtencionTiquetes {
 
-    public static void tiqueteAtendido(Caja[] cajas, Cola colaPreferencial, Cola colaRapida, Cola colaNormal, Pila pilaReportes) {
+   
+
+    
+  
+    
+    public static void tiqueteAtendido(GestorBanco gestorActual) {
+        
+        Caja[] cajas = gestorActual.getCajas();
+        Cola colaPreferencial = gestorActual.getColaPreferencial();
+        Cola colaRapida = gestorActual.getColaRapida();
+        Cola colaNormal = gestorActual.getColaNormal();
+   
+        
         String cajaInput = JOptionPane.showInputDialog("Ingrese el número de caja que finaliza atención:");
-        if (cajaInput == null) return;
+        if (cajaInput == "") return;
         
         try {
             int numeroCaja = Integer.parseInt(cajaInput);
@@ -21,17 +33,14 @@ public class AtencionTiquetes {
             if (cajaActual.estaOcupada()) {
                 Tiquete tiqueteTerminado = cajaActual.getTiqueteActual();
                 
-                String horaActual = LocalDateTime.now().toString();
-                tiqueteTerminado.setHoraAtencion(horaActual);
-                
-                pilaReportes.agregar(tiqueteTerminado);
+              
                 
                 JOptionPane.showMessageDialog(null, 
                                   "Atención finalizada con éxito para: " 
-                                + tiqueteTerminado.getNombre() 
-                                + "\nRegistrado en la pila de reportes.");
+                                + tiqueteTerminado.getNombre() );
                 cajaActual.setTiqueteActual(null);
             }
+            
 
             Cola colaAsociada = null;
             char tipoCaja = cajaActual.getTipoCaja();
@@ -44,12 +53,11 @@ public class AtencionTiquetes {
                 colaAsociada = colaNormal;
             }
             
+            
             if (!colaAsociada.esVacia()) {
                 Tiquete siguienteCliente = colaAsociada.desencolar();
                 
-                String horaAtencionSiguiente = LocalDateTime.now().toString();
-                siguienteCliente.setHoraAtencion(horaAtencionSiguiente);
-                cajaActual.setTiqueteActual(siguienteCliente);
+                 gestorActual.asignarClienteACaja(cajaActual, siguienteCliente);
                 
                 JOptionPane.showMessageDialog(null, 
                     "Siguiente cliente llamado...\n" +

@@ -29,7 +29,7 @@ public class Proyecto_Estructuras {
                     break;
                 case "2":
 
-                    JOptionPane.showMessageDialog(null, "En proceso");
+                    AtencionTiquetes.tiqueteAtendido(gb);
                     break;
                 
                 case "3":

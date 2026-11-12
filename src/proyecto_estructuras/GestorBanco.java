@@ -150,23 +150,11 @@ public class GestorBanco {
             
             Cola colaDestino = obtenerColaPorTipo(tipo);
             colaDestino.agregar(nuevoTiquete);
+     
 
-            Caja cajaLibre = buscarCajaLibrePorTipo(tipo);
-
-          
-            if (cajaLibre != null && colaDestino.getTamanio() == 1) {
-                colaDestino.desencolar();
-                asignarClienteACaja(cajaLibre, nuevoTiquete);
-                
-                JOptionPane.showMessageDialog(null, 
-                    "¡Esta libre pase adelante!\n" +
-                    "Hora de Emisión: " + horaCreacion + "\n" +
-                    "Cliente: " + nuevoTiquete.getNombre() + "\n" +
-                    "Por favor proceda directamente a la Caja #" + cajaLibre.getNumeroCaja());
-            } else {
                 int posicionActual = colaDestino.posicion(nuevoTiquete.getNumero());
-                int personasAdelante = posicionActual;
-                   // antes este metodo restaba pero porque el index empieza en 0 no es necesario hacer un -1
+                int personasAdelante = posicionActual - 1;
+                   // se resta porque posicion empieza en 1 
                 
                 
                 String numCajaSeleccionada = obtenerNumeroCajaSeleccionada(tipo);
@@ -174,10 +162,10 @@ public class GestorBanco {
                 JOptionPane.showMessageDialog(null,
                     "--- Espere ---\n" +
                     "Número de Tiquete: #" + nuevoTiquete.getNumero() + "\n" +
-                    "Hora de Emisión: " + horaCreacion + "\n" +
-                    "Caja de Atención: #" + numCajaSeleccionada + "\n" +
+                    "Hora de Emisión: #" + horaCreacion + "\n" +
+                    "Caja de Atención: " + numCajaSeleccionada + "\n" +
                     "Clientes por delante en fila: " + personasAdelante);
-            }
+            
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error: El formato de los datos ingresados es incorrecto.");
         }
@@ -196,7 +184,7 @@ public class GestorBanco {
     
    
     // Asigna un tiquete y registra la hora de atención en la caja indicada
-    private void asignarClienteACaja(Caja caja, Tiquete tiquete) {
+    public void asignarClienteACaja(Caja caja, Tiquete tiquete) {
         String horaAtencion = LocalDateTime.now().format(formatter);
         tiquete.setHoraAtencion(horaAtencion);
         caja.setTiqueteActual(tiquete);
@@ -239,4 +227,39 @@ public class GestorBanco {
     public String getNombreBanco() {
         return nombreBanco;
     }
+
+    public Cola getColaPreferencial() { // estos gets se los paso a atencion tiquetes
+        return colaPreferencial;
+    }
+
+    public void setColaPreferencial(Cola colaPreferencial) {
+        this.colaPreferencial = colaPreferencial;
+    }
+
+    public Cola getColaNormal() {
+        return colaNormal;
+    }
+
+    public void setColaNormal(Cola colaNormal) {
+        this.colaNormal = colaNormal;
+    }
+
+    public Caja[] getCajas() {
+        return cajas;
+    }
+
+    public void setCajas(Caja[] cajas) {
+        this.cajas = cajas;
+    }
+
+    public Cola getColaRapida() {
+        return colaRapida;
+    }
+
+    public void setColaRapida(Cola colaRapida) {
+        this.colaRapida = colaRapida;
+    }
+    
+    
+    
 }
