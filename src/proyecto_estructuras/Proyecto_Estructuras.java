@@ -19,7 +19,7 @@ public class Proyecto_Estructuras {
             // Muestra la ventana de opciones del módulo de tiquetes
             res = JOptionPane.showInputDialog(" ******* Modulo de tiquetes*******\n"
                     + "1)Crear un tiquete\n2)Atender tiquete en caja\n3)Ver fila\n0)Atras\n"
-                    + "ingrese una opcion (0-2)");
+                    + "ingrese una opcion (0-3)");
             if (res == null) break;
             
             switch (res) {
