@@ -30,16 +30,7 @@ public class AtencionTiquetes {
 
             Caja cajaActual = cajas[numeroCaja - 1];
 
-            if (cajaActual.estaOcupada()) {
-                Tiquete tiqueteTerminado = cajaActual.getTiqueteActual();
-                
-              
-                
-                JOptionPane.showMessageDialog(null, 
-                                  "Atención finalizada con éxito para: " 
-                                + tiqueteTerminado.getNombre() );
-                cajaActual.setTiqueteActual(null);
-            }
+            
             
 
             Cola colaAsociada = null;
@@ -62,6 +53,16 @@ public class AtencionTiquetes {
                 JOptionPane.showMessageDialog(null, 
                     "Siguiente cliente llamado...\n" +
                     "Caja #" + numeroCaja + " ahora atiende a: " + siguienteCliente.getNombre());
+                if (cajaActual.estaOcupada()) {
+                Tiquete tiqueteTerminado = cajaActual.getTiqueteActual();
+                
+              
+                
+                JOptionPane.showMessageDialog(null, 
+                                  "Atención finalizada con éxito para: " 
+                                + tiqueteTerminado.getNombre() );
+                cajaActual.setTiqueteActual(null);
+            }
             } else {
                 JOptionPane.showMessageDialog(null, "La Caja #" + numeroCaja + " se encuentra ahora libre y en espera.");
             }
